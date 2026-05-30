@@ -1,0 +1,8 @@
+# Bump the main task stack so WiFi + HTTP + std have room.
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=20000
+
+# Use a higher CPU clock while awake (we sleep most of the time anyway).
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_160=y
+
+# Keep logs readable over serial.
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y

@@ -1,0 +1,39 @@
+[package]
+name = "garden-survailor-node"
+version = "1.0.0"
+authors = ["you"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.77"
+
+[[bin]]
+name = "garden-survailor-node"
+harness = false # do not use the built in cargo test harness -> resolve rust-analyzer errors
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true
+opt-level = "z"
+
+[features]
+# No `embassy` here: this firmware is synchronous/blocking, and enabling
+# embassy-executor pulls in an undefined `__pender` symbol at link time.
+default = ["std", "esp-idf-svc/native"]
+
+pio = ["esp-idf-svc/pio"]
+std = ["alloc", "esp-idf-svc/binstart", "esp-idf-svc/std"]
+alloc = ["esp-idf-svc/alloc"]
+nightly = ["esp-idf-svc/nightly"]
+experimental = ["esp-idf-svc/experimental"]
+
+[dependencies]
+log = "0.4"
+anyhow = "1"
+esp-idf-svc = { version = "0.51", default-features = false }
+embedded-svc = "0.28"
+heapless = "0.8"
+
+[build-dependencies]
+embuild = "0.33"

@@ -1,0 +1,26 @@
+# ---- Python backend ----
+backend/venv/
+**/__pycache__/
+*.pyc
+backend/garden.db
+backend/garden.db-wal
+backend/garden.db-shm
+backend/garden.db-journal
+
+# ---- Rust / ESP32 firmware ----
+esp32-rust/target/
+esp32-rust/.embuild/
+esp32-rust/Cargo.lock
+
+# ---- Local secrets (see config.example.rs) ----
+esp32-rust/src/config.rs
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+README.pdf
+
+# ---- Claude Code harness internals ----
+.claude/

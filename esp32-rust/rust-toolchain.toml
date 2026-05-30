@@ -1,0 +1,4 @@
+[toolchain]
+# The `esp` toolchain (installed via espup) can build the `*-espidf` std target
+# with -Zbuild-std for both Xtensa and RISC-V (ESP32-C3) chips.
+channel = "esp"

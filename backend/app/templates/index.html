@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌱 Garden Survailor</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🌱</span>
+      <div>
+        <h1>Garden Survailor</h1>
+        <p class="subtitle">Soil moisture &amp; battery monitoring</p>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="nodeSelect" title="Device"></select>
+      <select id="rangeSelect" title="Time range">
+        <option value="6">Last 6h</option>
+        <option value="24" selected>Last 24h</option>
+        <option value="72">Last 3 days</option>
+        <option value="168">Last 7 days</option>
+        <option value="720">Last 30 days</option>
+      </select>
+      <button id="refreshBtn" title="Refresh now">⟳</button>
+      <button id="deleteBtn" class="danger-btn" title="Delete readings (password required)">🗑 Delete</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="cards" id="statusCards"></section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Soil Moisture</h2>
+        <span class="hint" id="moistureHint"></span>
+      </div>
+      <div class="chart-wrap"><canvas id="moistureChart"></canvas></div>
+      <div class="zone-legend">
+        <span><i style="background:#d97706"></i>Very dry</span>
+        <span><i style="background:#facc15"></i>Dry — needs water</span>
+        <span><i style="background:#34d399"></i>Just right</span>
+        <span><i style="background:#38bdf8"></i>Moist</span>
+        <span><i style="background:#3b82f6"></i>Soaked</span>
+      </div>
+    </section>
+
+    <div class="grid2">
+      <section class="panel">
+        <div class="panel-head"><h2>Battery</h2></div>
+        <div class="chart-wrap"><canvas id="batteryChart"></canvas></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><h2>Humidity / Temp</h2></div>
+        <div class="chart-wrap"><canvas id="extraChart"></canvas></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span id="lastUpdate">—</span>
+    <span class="dot">•</span>
+    <span>auto-refresh every 30s</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
