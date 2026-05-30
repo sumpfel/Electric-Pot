@@ -1,4 +1,4 @@
-// Garden Survailor dashboard logic
+// Electric Garden dashboard logic
 const $ = (id) => document.getElementById(id);
 const REFRESH_MS = 30000;
 
